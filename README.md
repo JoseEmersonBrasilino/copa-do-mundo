@@ -1,81 +1,62 @@
-[readme.md](https://github.com/user-attachments/files/26758587/readme.md)
-<?php
-require_once './controllers/SelecaoController.php';
+# 🏆 Gerenciador da Copa do Mundo (CRUD MVC)
 
-$app = new SelecaoController();
+## 📝 Sobre o Projeto
+Este projeto foi desenvolvido como desafio prático durante a minha formação na **Firjan SENAI** (em parceria com a Jaguar Land Rover). O objetivo foi construir um sistema completo de gerenciamento de dados (CRUD) focado nas seleções da Copa do Mundo, aplicando boas práticas de Engenharia de Software.
 
-$action = $_GET['action'] ?? '';
-$id = $_GET['id'] ?? null;
+A grande conquista deste projeto foi o uso rigoroso do **Padrão de Arquitetura MVC (Model-View-Controller)**, garantindo a separação clara entre as regras de negócio, a interface do usuário e o acesso ao banco de dados.
 
-// --- LÓGICA DO CONTROLLER (sem HTML)
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if ($action === 'atualizar') {
-        $app->atualizarDados();
-    } else {
-        $app->salvar();
-    }
-} else {
-    switch ($action) {
-        case 'novo':
-            require_once './views/create.php';
-            exit;
-            break;
+## 🚀 Tecnologias e Ferramentas Utilizadas
+* **Back-end:** PHP 8.x
+* **Banco de Dados:** MySQL
+* **Segurança e Conexão:** PDO (PHP Data Objects) com Prepared Statements
+* **Arquitetura:** MVC (Model, View, Controller)
+* **Front-end:** HTML5, CSS3 e **Bootstrap 4/5** (para um design responsivo)
 
-        case 'editar':
-            $app->editar($id);
-            exit;
-            break;
+## ⚙️ Funcionalidades Principais
+* [x] **CRUD Completo:** Cadastro, Leitura, Atualização e Exclusão de Seleções.
+* [x] **Dashboard Estatístico:** Exibição do total de seleções cadastradas e soma de títulos mundiais.
+* [x] **Agrupamento:** Visualização automática da quantidade de seleções por grupo.
+* [x] **Segurança:** Sistema protegido contra ataques de SQL Injection através de PDO.
 
-        case 'deletar':
-            $app->deletar($id);
-            exit;
-            break;
+## 🗺️ Implementações Futuras (Roadmap)
+Como todo bom software, este projeto tem espaço para evoluir. Algumas melhorias mapeadas para o futuro incluem:
+* [ ] **Tabela de Jogadores:** Implementação de relacionamento 1:N entre seleções e atletas.
+* [ ] **Upload de Escudos:** Sistema para subir imagens das bandeiras das seleções.
+* [ ] **Busca Avançada:** Filtros por nome, continente ou quantidade de títulos.
 
-        default:
-            $app->index(); // aqui você popula $totalSelecoes, $somaTitulos e $selecoesPorGrupo
-            break;
-    }
-}
+## 🤝 Agradecimentos
+Agradeço aos meus professores e mentores da Firjan SENAI e Thais pela orientação técnica e incentivo durante o desenvolvimento desta aplicação.
 
-// --- HTML A PARTIR DAQUI
-// Supondo que $totalSelecoes, $somaTitulos e $selecoesPorGrupo
-// já foram setados dentro de $app->index()
-?>
-<div class="row mb-4">
-    <div class="col-md-4">
-        <div class="card text-white bg-primary shadow">
-            <div class="card-body text-center">
-                <h5 class="card-title">Total de Seleções</h5>
-                <p class="display-4 font-weight-bold"><?php echo (int) $totalSelecoes; ?></p>
-            </div>
-        </div>
-    </div>
+# 🏆 Gerenciador da Copa do Mundo (CRUD MVC)
 
-    <div class="col-md-4">
-        <div class="card text-white bg-success shadow">
-            <div class="card-body text-center">
-                <h5 class="card-title">Títulos Mundiais</h5>
-                <p class="display-4 font-weight-bold"><?php echo (int) $somaTitulos; ?></p>
-            </div>
-        </div>
-    </div>
+## 📝 Sobre o Projeto
+Este projeto foi desenvolvido como desafio prático durante a minha formação na **Firjan SENAI** (em parceria com a Jaguar Land Rover). O objetivo foi construir um sistema completo de gerenciamento de dados (CRUD) focado nas seleções da Copa do Mundo, aplicando boas práticas de Engenharia de Software.
 
-    <div class="col-md-4">
-        <div class="card bg-light shadow">
-            <div class="card-body">
-                <h5 class="card-title text-center">Seleções por Grupo</h5>
-                <ul class="list-group list-group-flush">
-                    <?php foreach ($selecoesPorGrupo as $item): ?>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Grupo <?php echo htmlspecialchars($item['grupo']); ?>
-                            <span class="badge badge-primary badge-pill"><?php echo (int) $item['qtd']; ?></span>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
+A grande conquista deste projeto foi o uso rigoroso do **Padrão de Arquitetura MVC (Model-View-Controller)**, garantindo a separação clara entre as regras de negócio, a interface do usuário e o acesso ao banco de dados.
 
-<hr>
+## 🚀 Tecnologias e Ferramentas Utilizadas
+* **Back-end:** PHP 8.x
+* **Banco de Dados:** MySQL
+* **Segurança e Conexão:** PDO (PHP Data Objects) com Prepared Statements
+* **Arquitetura:** MVC (Model, View, Controller)
+* **Front-end:** HTML5, CSS3 e **Bootstrap 4/5** (para um design responsivo)
 
+## ⚙️ Funcionalidades Principais
+* [x] **CRUD Completo:** Cadastro, Leitura, Atualização e Exclusão de Seleções.
+* [x] **Dashboard Estatístico:** Exibição do total de seleções cadastradas e soma de títulos mundiais.
+* [x] **Agrupamento:** Visualização automática da quantidade de seleções por grupo.
+* [x] **Segurança:** Sistema protegido contra ataques de SQL Injection através de PDO.
+
+## 🗺️ Implementações Futuras (Roadmap)
+Como todo bom software, este projeto tem espaço para evoluir. Algumas melhorias mapeadas para o futuro incluem:
+* [ ] **Tabela de Jogadores:** Implementação de relacionamento 1:N entre seleções e atletas.
+* [ ] **Upload de Escudos:** Sistema para subir imagens das bandeiras das seleções.
+* [ ] **Busca Avançada:** Filtros por nome, continente ou quantidade de títulos.
+
+## 🤝 Agradecimentos
+Agradeço aos meus professores e mentores da Firjan SENAI e Thais pela orientação técnica e incentivo durante o desenvolvimento desta aplicação.
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/504f30ab-df8f-4460-bb02-7305fac891ac" />
+
+---
+Desenvolvido com ⚽ por [jOSE E DOS SANTOS BRASILINO]
